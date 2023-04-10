@@ -1,48 +1,46 @@
 <?php
-include_once('config.php');
+    if(!empty($_GET['id'])){
 
-if(isset($_POST['submit'])){
+    include_once('config.php');
 
-print('<br>');
-    print_r($_POST['nome']);
-   print('<br>');
-   print_r($_POST['senha']);
-   print('<br>');
-    print_r($_POST['email']);
-     print('<br>');
-    print_r($_POST['telefone']);
-   print('<br>');
-   print_r($_POST['genero']);
-   print_r('<br>');
-    print_r($_POST["data_nascimento"]);
-    print_r('<br>');
-    print_r($_POST['cidade']);
-    print('<br>');
-    print_r($_POST['estado']);
-    print_r('<br>');
-    print_r($_POST['end']);
-   
-   
-
-$nome = $_POST['nome'];
-$senha = $_POST['senha'];
-$email = $_POST['email'];
-$telefone = $_POST['telefone'];
-$sexo = $_POST['genero'];
-$data_nasc =$_POST["data_nascimento"];
-$cidade = $_POST['cidade'];
-$estado  = $_POST['estado'];
-$endereco = $_POST['end'];
+    $id = $_GET['id'];
+    echo $id;
+   $sqlSelect = "SELECT * FROM contatos WHERE idcon=$id";
+   $result = $conexao->query($sqlSelect);
+   echo " porra";
+   print_r($result);
+  
+        if($result->num_rows >0){
 
 
+            while($user_data = mysqli_fetch_assoc($result)){
 
-$result = mysqli_query($conexao,"INSERT INTO contatos(nome,senha,fone,email,sexo,data_nasc,cidade,estado,endereco)
-VALUES('$nome','$senha','$telefone','$email','$sexo','$data_nasc','$cidade','$estado','$endereco')");
-header('Location:login.html');
+                $endereco ="1236";//$user_data['end'];
+            $nome = $user_data['nome'];
+            $senha = $user_data['senha'];
+            $telefone = $user_data['fone'];
+            $email = $user_data['email'];
+            $sexo = $user_data['sexo'];
+            $data_nasc =$user_data['data_nasc'];
+            $cidade = $user_data['cidade'];
+            $estado  = $user_data['estado'];
+            $endereco =$user_data['endereco'];
+           
+            }
+        
 
-}else{
-    print_r("erro");
+
+        }else
+        {
+
+            header('Location:sistema.php');
+        }
+
+
+
+
 }
+
 
 
 ?>
@@ -155,51 +153,50 @@ header('Location:login.html');
     </style>
 </head>
 <body>
-<a href="home.php"><img src="arrow-right-square-fill.svg" alt=""><strong>   back </strong></a>
+<a href="sistema.php"><img src="arrow-right-square-fill.svg" alt=""><strong>   back </strong></a>
     <div class="box">
-        <form action="formulario.php" method="post">
+        <form action="saveEdit.php" method="post">
             <fieldset>
                 <legend><strong>Formulario de Clientes</strong></legend>
                 <br>
                 <div class="inputbox">
-                    <input type="text" name="nome" id="inome" class="inpuuser" required>
+                    <input type="text" name="nome" id="inome" class="inpuuser" value="<?php echo $nome ?>"required>
                     <label class="labelinput" for="">Nome Completo</label>
                 </div>
                 <br>
                 <div class="inputbox">
-                    <input type="text" name="email" id="imail" class="inpuuser" required>
+                    <input type="text" name="email" id="imail" class="inpuuser" value="<?php echo $email ?>"required>
                     <label class="labelinput" for="">E-mail</label>
                 </div>
                 <br>
                 <div class="inputbox">
-                    <input type="text" name="senha" id="isenha" class="inpuuser" required>
+                    <input type="text" name="senha" id="isenha" class="inpuuser" value="<?php echo $senha ?>"required>
                     <label class="labelinput" for="">Password</label>
                 </div>
                 <br>
                 <div class="inputbox">
-                    <input type="tel" name="telefone" id="itelefone" class="inpuuser" requerid
-                     >
+                    <input type="text" name="telfone" id="itelefone" class="inpuuser" value="<?php echo $telefone ?>"required>
                     <label class="labelinput"for="">Celular</label>
                 </div>
                 <p>Sexo:</p>
                 <div class="sexo">
-                    <input type="radio" name="genero" id="feminino" value="feminino"checked>
+                    <input type="radio" name="genero" id="feminino" value="feminino"<?php echo $sexo =="feminino" ? 'checked':''?> required>
                     <label for="feminino">Feminino</label>
-                    <input type="radio" name="genero" id="masculino" value="masculino">
+                    <input type="radio" name="genero" id="masculino" value="masculino"<?php echo $sexo == "masculino" ?'checked':''?>>
                     <label for="masculino">Masculino</label>
-                    <input type="radio" name="genero" id="outro" value="outro">
-                    <label for="outro">Outros</label>
+                    <input type="radio" name="genero" id="outro" value="outro"<?php echo $sexo == "outro"?'checked':''?>>
+                    <label for="outro">Outro</label>
                 </div>
                 <br><br>
                 <div class="nas">
                     <strong><label for="outro">Data de Nascimento :</label></strong>
-                    <input type="date" name="data_nascimento" id="data_nascimento" class="in_nasc">
+                    <input type="date" name="data_nascimento" id="data_nasc" class="in_nasc" value="<?php echo $data_nasc ?>">
                     
                 </div>
                 <br><br>
                 <div class="inputbox">
                    
-                    <input type="text" name="cidade" id="cidade" class="inpuuser" required>
+                    <input type="text" name="cidade" id="cidade" class="inpuuser"value="<?php echo $cidade ?>" required>
                   <label class="labelinput"for="cidade">Cidade:</label>
                     
                     
@@ -207,14 +204,14 @@ header('Location:login.html');
                 <br>
                 <div class="inputbox">
                     
-                    <input type="text" name="estado" id="estado" class="inpuuser" required>
+                    <input type="text" name="estado" id="estado" class="inpuuser" value="<?php echo $estado ?>"required>
                    <label class="labelinput"for="estado">Estado:</label>
                     
                 </div>
                 <br>
                 <div class="inputbox">
-                    <input type="text" name="end" id="end" class="inpuuser" required>
-                   <label class="labelinput"for="outro">Endereco:</label>
+                    <input type="text" name="end" id="endereco" class="inpuuser"value="<?php echo $endereco ?>" required>
+                   <label class="labelinput"for="end">Endereco:</label>
                 </div>
                 <br>
                 <input id="sub" type="submit" name="submit" value="Enviar">

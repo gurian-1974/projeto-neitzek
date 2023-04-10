@@ -52,22 +52,30 @@
             cursor: pointer;
         }
 
+        a{
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
 
 
 
     </style>
 </head>
 <body>
+    <a href="home.php"><img src="arrow-right-square-fill.svg" alt=""><strong>   back </strong></a>
     <div>
         <h1>Login</h1>
-        <form action="" method="get">
-            <input type="text" name="" id="" placeholder="Nome">
+        <form action="testelogin.php" method="post" >
+            <input type="text" name="email" id="email" placeholder="Email" required minlength="6">
             <br>
             <br>
-            <input type="password" name="" id=""placeholder="Senha">
+            <input type="password" name="senha" id="senha"placeholder="Senha" required minlength="6">
             <br>
             <br>
-            <input id="btn" type="submit" value="Login">
+            <input name = "submit" id="btn" type="submit" value="Login">
         </form>
 
     </div>
