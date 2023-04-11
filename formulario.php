@@ -155,7 +155,7 @@ header('Location:login.html');
     </style>
 </head>
 <body>
-<a href="home.php"><img src="arrow-right-square-fill.svg" alt=""><strong>   back </strong></a>
+<a href="sistema.php"><img src="arrow-right-square-fill.svg" alt=""><strong>   back </strong></a>
     <div class="box">
         <form action="formulario.php" method="post">
             <fieldset>

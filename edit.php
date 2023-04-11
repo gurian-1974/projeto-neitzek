@@ -15,7 +15,7 @@
 
             while($user_data = mysqli_fetch_assoc($result)){
 
-                $endereco ="1236";//$user_data['end'];
+            
             $nome = $user_data['nome'];
             $senha = $user_data['senha'];
             $telefone = $user_data['fone'];
@@ -35,9 +35,6 @@
 
             header('Location:sistema.php');
         }
-
-
-
 
 }
 
@@ -129,7 +126,7 @@
             border-radius: 10px;
             padding: 8px;
         }
-        #sub{
+        #update{
             background-image: linear-gradient(45deg,rgb(17, 0, 255),rgb(0, 162, 255));
             border: none;
             width: 100%;
@@ -155,7 +152,7 @@
 <body>
 <a href="sistema.php"><img src="arrow-right-square-fill.svg" alt=""><strong>   back </strong></a>
     <div class="box">
-        <form action="saveEdit.php" method="post">
+        <form action="saveEdit.php" method="POST">
             <fieldset>
                 <legend><strong>Formulario de Clientes</strong></legend>
                 <br>
@@ -175,7 +172,7 @@
                 </div>
                 <br>
                 <div class="inputbox">
-                    <input type="text" name="telfone" id="itelefone" class="inpuuser" value="<?php echo $telefone ?>"required>
+                    <input type="text" name="telefone" id="itelefone" class="inpuuser" value="<?php echo $telefone ?>"required>
                     <label class="labelinput"for="">Celular</label>
                 </div>
                 <p>Sexo:</p>
@@ -212,9 +209,11 @@
                 <div class="inputbox">
                     <input type="text" name="end" id="endereco" class="inpuuser"value="<?php echo $endereco ?>" required>
                    <label class="labelinput"for="end">Endereco:</label>
-                </div>
+                </div >
                 <br>
-                <input id="sub" type="submit" name="submit" value="Enviar">
+                <input type="hidden" name="id" value="<?php echo "$id"?>">
+                
+                <input id="update" type="submit" name="update" value="Salva" >
                 <br>
                 
             </fieldset>

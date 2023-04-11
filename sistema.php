@@ -11,8 +11,27 @@
        header('Location:login.html');
     }
     $logado = $_SESSION['email'];
+    if(!empty($_GET['search']))
+    {
 
-    $sql = "SELECT * FROM contatos ORDER BY idcon DESC";
+           $data =  $_GET['search'];
+           print_r($data);
+
+           $sql = "SELECT * FROM contatos WHERE idcon LIKE '%$data%' or nome LIKE '%$data%' or email LIKE '%$data%' ORDER BY idcon DESC"; 
+           $result = $conexao->query($sql);
+    }
+    else
+    {
+        echo "nao a dados de pesquis";
+        $sql = "SELECT * FROM contatos ORDER BY idcon DESC";
+        $result = $conexao->query($sql);
+      
+    }
+    
+    $result = $conexao->query($sql);
+  
+
+   
 
     $result = $conexao->query($sql);
 
@@ -62,6 +81,12 @@ color:white;
 padding: 10px;
 
         }
+    .box-search{
+        display: flex;
+        margin-left: 30px;
+
+
+    }    
 
     </style>
 </head>
@@ -71,14 +96,29 @@ padding: 10px;
     <a class="navbar-brand" href="#">SISTEMA | LG</a>
   </div>
   <div class="d-flex">
-  <a href="./sair.php" class="btn btn-danger me-5">SAIR</a>
+  <a href="./formulario.php" class="btn btn-success me-5">Insert</a>
+  </div>
+  <div class="d-flex">
+  <a href="./sair.php" class="btn btn-danger me-5">Exit</a>
   </div>
 </nav>
         <br>
 
 
 
-    <h1>Relatorio de Clientes</h1>
+    <h1>Relatorio de Clientes </h1>
+    <div class="box-search">
+        <input type="search" class= "form-control w-25 "name="pesquisar" id="pesquisar" placeholder="SEARCH">
+        <Button onclick="searchData()" class="btn btn-success me-5">
+       
+        <svg xmlns='http://www.w3.org/2000/svg' width='18'height='18' fill='currentColor' class='bi' bi-search viewBox='0 0 16 16'>
+  <path d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'/>
+</svg>
+      
+        </Button>
+
+    </div>
+
 
     <div class="m-5">
         <table class="table">
@@ -125,6 +165,11 @@ padding: 10px;
                <path fill-rule='evenodd'd='M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z'/>
              </svg>
              </a>
+             <a class='btn btn-5m btn-danger' href='delete.php?id=$user_data[idcon]'>
+             <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-trash3' viewBox='0 0 16 16'>
+            <path d='M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z'/>
+            </svg>
+            </a>
              </td>"
                
                
@@ -136,5 +181,25 @@ padding: 10px;
         </table>
     </div>
 </body>
+            <script>
+                var search = document.getElementById('pesquisar');
+
+                search.addEventListener("keydonw",function(event){
+
+                    if(event.key === "Enter"){
+                        searchData();
+
+                    }
+
+                }
+                );
+            
+                    function searchData()
+                    {
+
+                        window.location = 'sistema.php?search='+search.value;
+                    }
+                
+            </script>
 </html>
 
