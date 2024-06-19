@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./arrow-right-square-fill.svg" type="image/x-icon">
     <title>SITE | LG</title>
+
     <style>
         body{
             background-image: linear-gradient(90deg,dodgerblue,blue);
@@ -46,9 +47,10 @@
             border: 2px solid white;
         }
     </style>
+
 </head>
 <body>
-    <h1>Luciano Gurian</h1>
+    <h1>Sistema Projeto Integrador</h1>
     <div class="box">
         <a href="./login.html">Login</a>
         <a href="./formulario.php">Cadastre-se</a>

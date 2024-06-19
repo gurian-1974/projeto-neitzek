@@ -5,14 +5,15 @@
 
     $id = $_GET['id'];
     echo $id;
-   $sqlSelect = "SELECT * FROM contatos WHERE idcon=$id";
+    echo 'teste';
+   $sqlSelect = "SELECT * FROM gustavo WHERE id_gu=$id";
    $result = $conexao->query($sqlSelect);
-   echo " porra";
+   echo " deletado";
    print_r($result);
   
         if($result->num_rows >0){
 
-           $sqlDelete = "DELETE FROM contatos WHERE idcon=$id";
+           $sqlDelete = "DELETE FROM gustavo WHERE id_gu=$id";
            $resutset = $conexao->query($sqlDelete);
 
 

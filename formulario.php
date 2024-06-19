@@ -3,24 +3,7 @@ include_once('config.php');
 
 if(isset($_POST['submit'])){
 
-print('<br>');
-    print_r($_POST['nome']);
-   print('<br>');
-   print_r($_POST['senha']);
-   print('<br>');
-    print_r($_POST['email']);
-     print('<br>');
-    print_r($_POST['telefone']);
-   print('<br>');
-   print_r($_POST['genero']);
-   print_r('<br>');
-    print_r($_POST["data_nascimento"]);
-    print_r('<br>');
-    print_r($_POST['cidade']);
-    print('<br>');
-    print_r($_POST['estado']);
-    print_r('<br>');
-    print_r($_POST['end']);
+
    
    
 
@@ -36,9 +19,9 @@ $endereco = $_POST['end'];
 
 
 
-$result = mysqli_query($conexao,"INSERT INTO contatos(nome,senha,fone,email,sexo,data_nasc,cidade,estado,endereco)
+$result = mysqli_query($conexao,"INSERT INTO gustavo(nome,senha,telefone,email,sexo,data_nas,cidade,estado,endereco)
 VALUES('$nome','$senha','$telefone','$email','$sexo','$data_nasc','$cidade','$estado','$endereco')");
-header('Location:login.html');
+header('Location:sistema.php');
 
 }else{
     print_r("erro");
@@ -58,101 +41,105 @@ header('Location:login.html');
     <style>
         body{
            
-            font-family: Arial, Helvetica, sans-serif;
-            background-image: linear-gradient(45deg,rgb(17, 0, 255),rgb(0, 162, 255));
-
-        }
-
-        .box{
-            margin: 50px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%,-50%);
-            background-color: rgba(3, 3, 41, 0.79);
-            font-family: Arial, Helvetica, sans-serif;
-            color: white;
-            padding: 10px;
-            border-radius: 15px;
-            width: 30%;
-            margin-bottom: 30px;
-        
+           font-family: Arial, Helvetica, sans-serif;
+           background-image: linear-gradient(45deg,rgb(17, 0, 255),rgb(0, 162, 255));
+       
+       }
+       
+       .box{
+           margin: 50px;
+           position: absolute;
+           top: 50%;
+           left: 50%;
+           transform: translate(-50%,-50%);
+           background-color: rgba(3, 3, 41, 0.79);
+           font-family: Arial, Helvetica, sans-serif;
+           color: white;
+           padding: 10px;
+           border-radius: 15px;
+           width: 30%;
+           margin-bottom: 30px;
+       
+          
+       
+          
+       }
+       form {
+       
+           padding: 10px;
+       }
+       
+       fieldset{
+           border-radius: 10px;
+          padding: 20px;
+          
+       }
+       
+       legend{
+           border: 2px solid white;
+           border-radius: 5px;
+           text-align: center;
+           padding: 10px;
+       }
+       .inputbox{
+           position: relative;
+           padding: 5px;
+       }
+       .inpuuser{
+           background: none;
+           border: none;
+           border-bottom: 1px solid white;
+           outline: none;
+           color: white;
+           font-size: 15px;
+           width:100%;
+           letter-spacing: 2px;
+       
+       }
+       .labelinput{
+           position: absolute;
+           top: 0px;
+           left: 0px;
+           pointer-events: none;
+           transition: .5px;
+       
+       }
+       .inpuuser:focus~.labelinput,.inpuuser:valid~.labelinput{
+           top:-20px;
+           color: rgb(0, 136, 255);
+           font-size: 12px;
+       }
+       #data_nascimento{
+           border: none;
+           border-radius: 10px;
+           padding: 8px;
+       }
+       #sub{
+           background-image: linear-gradient(45deg,rgb(17, 0, 255),rgb(0, 162, 255));
+           border: none;
+           width: 100%;
+           height: 25px;
+           color: white;
+           border-radius: 10px;
+          padding: auto;
            
-
-           
-        }
-        form {
-
-            padding: 10px;
-        }
-
-        fieldset{
-            border-radius: 10px;
-           padding: 20px;
-           
-        }
-
-        legend{
-            border: 2px solid white;
-            border-radius: 5px;
-            text-align: center;
-            padding: 10px;
-        }
-        .inputbox{
-            position: relative;
-            padding: 5px;
-        }
-        .inpuuser{
-            background: none;
-            border: none;
-            border-bottom: 1px solid white;
-            outline: none;
-            color: white;
-            font-size: 15px;
-            width:100%;
-            letter-spacing: 2px;
-
-        }
-        .labelinput{
-            position: absolute;
-            top: 0px;
-            left: 0px;
-            pointer-events: none;
-            transition: .5px;
-
-        }
-        .inpuuser:focus~.labelinput,.inpuuser:valid~.labelinput{
-            top:-20px;
-            color: rgb(0, 136, 255);
-            font-size: 12px;
-        }
-        #data_nascimento{
-            border: none;
-            border-radius: 10px;
-            padding: 8px;
-        }
-        #sub{
-            background-image: linear-gradient(45deg,rgb(17, 0, 255),rgb(0, 162, 255));
-            border: none;
-            width: 100%;
-            height: 25px;
-            color: white;
-            border-radius: 10px;
-           padding: auto;
-            
-            font-family: Arial, Helvetica, sans-serif;
-            font-weight: bolder;
-        }
-
-        a{
-            color: white;
-            text-decoration: none;
-            font-size: 16px;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
+           font-family: Arial, Helvetica, sans-serif;
+           font-weight: bolder;
+       }
+       
+       a{
+           color: white;
+           text-decoration: none;
+           font-size: 16px;
+           font-family: Arial, Helvetica, sans-serif;
+       }
+       
+       
 
     </style>
+
+
+
 </head>
 <body>
 <a href="sistema.php"><img src="arrow-right-square-fill.svg" alt=""><strong>   back </strong></a>
@@ -193,7 +180,7 @@ header('Location:login.html');
                 <br><br>
                 <div class="nas">
                     <strong><label for="outro">Data de Nascimento :</label></strong>
-                    <input type="date" name="data_nascimento" id="data_nascimento" class="in_nasc">
+                    <input type="date" name="data_nasc" id="data_nascimento" class="in_nasc">
                     
                 </div>
                 <br><br>

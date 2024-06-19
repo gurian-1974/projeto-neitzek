@@ -5,10 +5,10 @@
 
     $id = $_GET['id'];
     echo $id;
-   $sqlSelect = "SELECT * FROM contatos WHERE idcon=$id";
+   $sqlSelect = "SELECT * FROM gustavo WHERE id_gu=$id";
    $result = $conexao->query($sqlSelect);
-   echo " porra";
-   print_r($result);
+  # echo " porra";
+  # print_r($result);
   
         if($result->num_rows >0){
 
@@ -18,10 +18,10 @@
             
             $nome = $user_data['nome'];
             $senha = $user_data['senha'];
-            $telefone = $user_data['fone'];
+            $telefone = $user_data['telefone'];
             $email = $user_data['email'];
             $sexo = $user_data['sexo'];
-            $data_nasc =$user_data['data_nasc'];
+            $data_nasc =$user_data['data_nas'];
             $cidade = $user_data['cidade'];
             $estado  = $user_data['estado'];
             $endereco =$user_data['endereco'];

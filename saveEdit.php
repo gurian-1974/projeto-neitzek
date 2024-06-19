@@ -36,8 +36,8 @@ if(isset($_POST['update'])){
         $endereco = $_POST['end'];
 
 
-        $sqlUpdate ="UPDATE contatos SET nome='$nome',senha='$senha',fone='$telefone',email='$email',sexo='$sexo',data_nasc='$data_nasc',cidade='$cidade',estado='$estado',endereco='$endereco' 
-       WHERE idcon='$id'";
+        $sqlUpdate ="UPDATE gustavo SET nome='$nome',senha='$senha',telefone='$telefone',email='$email',sexo='$sexo',data_nas='$data_nasc',cidade='$cidade',estado='$estado',endereco='$endereco' 
+       WHERE id_gu='$id'";
        
             
         $result = $conexao->query($sqlUpdate);

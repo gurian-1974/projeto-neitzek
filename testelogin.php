@@ -11,7 +11,7 @@ if(isset($_POST["submit"])){
     //print_r("<br>");
     //print_r($senha);
 
-    $sql = "SELECT * FROM contatos WHERE email = '$email' and senha='$senha'";
+    $sql = "SELECT * FROM gustavo WHERE email = '$email' and senha='$senha'";
    
 
     $result = $conexao->query($sql);
@@ -23,7 +23,7 @@ if(isset($_POST["submit"])){
         unset($_SESSION['email']);
         unset($_SESSION['senha']);
        header('Location:login.html');
-
+       
     }else{
 
         $_SESSION['email']=$email;

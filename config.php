@@ -2,7 +2,7 @@
 $dbhost = 'localhost';
 $dbuser = 'root';
 $dbpass = '';
-$dbname = 'dbagenda';
+$dbname = 'dbgustavo';
 
 $conexao = new mysqli($dbhost,$dbuser,$dbpass,$dbname);
 
